@@ -15,19 +15,39 @@ namespace EmployeeManagement.Api.Models
             _appDbContext = appDbContext;
         }
 
-        public Task<Employee> AddEmployee(Employee employee)
+        public async Task<Employee> AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            var newEmployee = await _appDbContext.Employees.AddAsync(employee);
+            try
+            {
+                 await _appDbContext.SaveChangesAsync();
+                 return newEmployee.Entity;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error: {ex.Message}");
+            }
         }
 
-        public void DeleteEmployee(int employeeId)
+        public async Task<Employee> DeleteEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            var result = await GetEmployee(employeeId);
+            if(result!=null){
+                _appDbContext.Employees.Remove(result);
+                await _appDbContext.SaveChangesAsync();
+            }
+            return result;
         }
 
-        public Task<Employee> GetEmployee(int employeeId)
+        public async Task<Employee> GetEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Employees
+            .FirstOrDefaultAsync(e=>e.EmployeeId==employeeId);
+            if(result!=null){
+                return result;
+            }else {
+                throw new Exception($"Error: Data Tidak Ditemukan");
+            }
         }
 
         public async Task<IEnumerable<Employee>> GetEmployees()
@@ -35,9 +55,22 @@ namespace EmployeeManagement.Api.Models
             return await _appDbContext.Employees.ToListAsync();
         }
 
-        public Task<Employee> UpdateEmployee(Employee employee)
+        public async Task<Employee> UpdateEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            var result = await GetEmployee(employee.EmployeeId);
+            if(result!=null){
+                result.FirstName = employee.FirstName;
+                result.LastName = employee.LastName;
+                result.Email = employee.Email;
+                result.DateOfBirth = employee.DateOfBirth;
+                result.Gender = employee.Gender;
+                result.DepartmentId = employee.DepartmentId;
+                result.PhotoPath = employee.PhotoPath;
+
+                await _appDbContext.SaveChangesAsync();
+                return result;
+            }
+            return null;
         }
     }
 }
