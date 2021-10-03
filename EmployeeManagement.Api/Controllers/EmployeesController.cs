@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManagement.Api.Models;
 using EmployeeManagement.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Api.Controllers {
@@ -69,6 +70,22 @@ namespace EmployeeManagement.Api.Controllers {
 
             }catch(Exception ex){
                 return StatusCode(500,$"Gagal delete data {ex.Message}");
+            }
+        }
+
+        //menambahkan search employee
+        [HttpGet("{search}/{name}/{gender?}")]
+        public async Task<ActionResult<IEnumerable<Employee>>> Search(string name,Gender? gender){
+            try{
+                var result = await _employeeRepository.Search(name,gender);
+                if(result.Any()){
+                    return Ok(result);
+                }
+                return NotFound();
+            }
+            catch(Exception){
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error untuk menampilkan data dari database");
             }
         }
     }
