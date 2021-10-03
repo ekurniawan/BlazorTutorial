@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 
 namespace EmployeeManagement.Api {
@@ -28,16 +29,6 @@ namespace EmployeeManagement.Api {
                 c.SwaggerDoc ("v1", new OpenApiInfo { Title = "EmployeeManagement.Api", Version = "v1" });
             });
 
-            services.AddCors (options => {
-                options.AddPolicy ("AllowAll",
-                    builder => {
-                        builder
-                            .AllowAnyOrigin ()
-                            .AllowAnyMethod ()
-                            .AllowAnyHeader ()
-                            .AllowCredentials ();
-                    });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +43,10 @@ namespace EmployeeManagement.Api {
 
             app.UseRouting ();
 
-            app.UseCors("AllowAll");
+            app.UseCors (policy =>
+                policy.WithOrigins ("http://localhost:6000", "https://localhost:6001")
+                .AllowAnyMethod ()
+                .WithHeaders (HeaderNames.ContentType));
 
             app.UseAuthorization ();
 
