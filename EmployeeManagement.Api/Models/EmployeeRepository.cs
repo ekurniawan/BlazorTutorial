@@ -55,7 +55,7 @@ namespace EmployeeManagement.Api.Models
             return await _appDbContext.Employees.ToListAsync();
         }
 
-        
+        //menambahkan search employee
         public async Task<IEnumerable<Employee>> Search(string name, Gender? gender)
         {
             IQueryable<Employee> query = _appDbContext.Employees;

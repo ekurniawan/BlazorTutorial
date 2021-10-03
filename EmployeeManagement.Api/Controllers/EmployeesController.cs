@@ -73,6 +73,7 @@ namespace EmployeeManagement.Api.Controllers {
             }
         }
 
+        //menambahkan search employee
         [HttpGet("{search}/{name}/{gender?}")]
         public async Task<ActionResult<IEnumerable<Employee>>> Search(string name,Gender? gender){
             try{
