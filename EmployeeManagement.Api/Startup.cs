@@ -50,8 +50,8 @@ namespace EmployeeManagement.Api {
             app.UseRouting ();
 
             app.UseCors (policy =>
-                policy.WithOrigins ("http://localhost:6000", "https://localhost:6001")
-                .AllowAnyMethod ()
+                policy.WithOrigins("http://localhost:7000", "https://localhost:7001", "http://localhost:52192", "https://localhost:44313")
+                .AllowAnyMethod()
                 .WithHeaders (HeaderNames.ContentType));
 
             app.UseAuthorization ();

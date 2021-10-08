@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LatihanBlazor", "LatihanBlazor\LatihanBlazor.csproj", "{D7F97C21-230B-4D0A-8A20-BCD4C4AC63D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LatihanBlazor", "LatihanBlazor\LatihanBlazor.csproj", "{D7F97C21-230B-4D0A-8A20-BCD4C4AC63D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Models", "EmployeeManagement.Models\EmployeeManagement.Models.csproj", "{496A43AD-1826-4E1D-9420-39A381463FB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.Models", "EmployeeManagement.Models\EmployeeManagement.Models.csproj", "{496A43AD-1826-4E1D-9420-39A381463FB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Api", "EmployeeManagement.Api\EmployeeManagement.Api.csproj", "{37DE9F54-8A45-4119-8D60-216A007A7BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.Api", "EmployeeManagement.Api\EmployeeManagement.Api.csproj", "{37DE9F54-8A45-4119-8D60-216A007A7BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D7F97C21-230B-4D0A-8A20-BCD4C4AC63D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +55,11 @@ Global
 		{37DE9F54-8A45-4119-8D60-216A007A7BE5}.Release|x64.Build.0 = Release|Any CPU
 		{37DE9F54-8A45-4119-8D60-216A007A7BE5}.Release|x86.ActiveCfg = Release|Any CPU
 		{37DE9F54-8A45-4119-8D60-216A007A7BE5}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7815B30E-CE59-48DE-8E6A-D8D919049AB3}
 	EndGlobalSection
 EndGlobal
