@@ -15,6 +15,7 @@ namespace LatihanBlazor.Pages
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
 
+        [Parameter]
         public string Id { get; set; }
 
         protected async override Task OnInitializedAsync()
