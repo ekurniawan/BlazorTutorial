@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Models;
 using LatihanBlazor.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,30 @@ namespace LatihanBlazor.Pages
 
         [Parameter]
         public string Id { get; set; }
+
+        protected string Coordinates { get; set; }
+
+        protected void Mouse_Move(MouseEventArgs e)
+        {
+            Coordinates = $"X = {e.ClientX}  Y = {e.ClientY}";
+        }
+
+        protected string ButtonText { get; set; } = "Hide Footer";
+        protected string CssClass { get; set; } = null;
+
+        protected void Button_Click()
+        {
+            if (ButtonText == "Hide Footer")
+            {
+                ButtonText = "Show Footer";
+                CssClass = "HideFooter";
+            }
+            else
+            {
+                CssClass = null;
+                ButtonText = "Hide Footer";
+            }
+        }
 
         protected async override Task OnInitializedAsync()
         {

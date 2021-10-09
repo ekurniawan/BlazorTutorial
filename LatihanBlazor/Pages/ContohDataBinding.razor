@@ -1,0 +1,31 @@
+﻿@page "/contohdatabinding"
+<h3>Contoh Data Binding</h3>
+
+<b>Nama :</b> @(Gender == "Male" ? $"Pak {Name}" : $"Bu {Name}")
+<br />
+<b>Name: </b>
+<input value="@Name" />
+<br />
+<b>Name dengan event :</b>
+<input value="@Name" @onchange="@(e => { Name = e.Value.ToString(); })" />
+<br />
+<b>Name dengan two way :</b>
+<input @bind="Name" />
+<br />
+<b>Name dengan bind event :</b>
+<input @bind="Name" @bind:event="oninput" />
+<br />
+<b>Colour :</b>
+<input @bind="Colour" />
+
+<div @bind-style="Colour" @bind-style:event="onchange">
+    <h3>The background colour of this text changes</h3>
+</div>
+<hr />
+<p>Menghitung jumlah huruf: </p>
+<div>
+    <textarea @bind="Description" @bind:event="oninput" />
+</div>
+<div>
+    Count : @Description.Length
+</div>
