@@ -18,8 +18,6 @@ namespace LatihanBlazor.Pages
         protected override async Task OnInitializedAsync()
         {
             Employees = (await EmployeeService.GetEmployees()).ToList();
-        }
-
-        
+        } 
     }
 }
