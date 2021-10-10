@@ -53,7 +53,7 @@ namespace EmployeeManagement.Api.Models
 
         public async Task<IEnumerable<Employee>> GetEmployees()
         {
-            return await _appDbContext.Employees.ToListAsync();
+            return await _appDbContext.Employees.Include(e=>e.Department).ToListAsync();
         }
 
         //menambahkan search employee
